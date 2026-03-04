@@ -1,0 +1,155 @@
+
+:root {
+    --main-color:"#009d5e";
+    --sidebar: #fafafa;
+    --sidebar-foreground: #3f3f46;
+    --sidebar-primary: #18181b;
+    --sidebar-primary-foreground: #fafafa;
+    --sidebar-accent: #f4f4f5;
+    --sidebar-accent-foreground: #18181b;
+    --sidebar-border: #e5e7eb;
+    --sidebar-ring: #3b82f6;
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (min-width :768px) {
+    .container {
+        width: 750px;
+    }
+}
+@media (min-width:992px) {
+    .container {
+        width: 970px;
+    }
+}
+@media (min-width:1200px) {
+    .container {
+        width: 1170px;
+    }
+  
+}
+
+header form {
+  display: flex;
+  max-width: 700px;
+  position: relative;
+}
+@media(max-width:767px){
+    header .center .image{
+        display: none;
+    }
+}
+header form input {
+    background-color: #f9fafb;
+    width: 600px;
+    height: 50px;
+    border-radius: 7px;
+    padding: 0 0 0 30px;
+
+
+}
+header form input:hover {
+    border: 1px solid #00a844 ;
+}
+@media(max-width:767px) {
+    header form {
+        display: none;
+    }
+}
+header form input:focus {
+    outline: none;
+}
+form .search{
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 10px;
+    transform: translateY(-50%);
+}
+header form p {
+    position: absolute;
+    inset-block-start: 50%;
+    transform: translateY(-50%);
+    right: 45px;
+    background-color: white;
+    font-size: 15px;
+    padding: 4px;
+
+}
+header .signup span {
+    position: absolute;
+       top: -4px;
+    right: -11px;
+    width: 17px;
+    height: 17px;
+    background-color: #00a844;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+
+}
+@media(max-width:767px) {
+
+  header .signup {
+        display: flex;
+        gap: 20px;
+    }
+    
+     
+}
+header .container .signup  .buttons  {
+display: flex;
+gap: 10px;
+}
+header .container .signup  .buttons .login {
+color: #fff;
+    background-color: #00a844;
+    padding: 4px 10px;
+    transition: 0.3s;
+    border: 1px solid #00a844;
+    border-radius: 4px;
+    font-weight: bold;
+}
+header .container .signup  .buttons .login:hover {
+    background-color: white;
+    color: #00a844;
+}
+header .container .signup  .buttons .register {
+    color: #00a844;
+    background-color:#fff;
+    padding: 4px 10px;
+    transition: 0.3s;
+    border: 1px solid #00a844;
+    border-radius: 4px;
+    transition: 0.3s;
+    font-weight: bold;
+}
+header .container .signup  .buttons .register:hover {
+    background-color: #00a844;
+    color: white;
+}
+header .bottom ul {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+header .bottom ul li a {
+    color: #6b7280;
+    font-size: 15px;
+    font-weight: bold;
+}
+header .bottom ul li a.active {
+    color: #00a844;
+}
+@media(max-width:767px){
+header .bottom .need{
+        display: none;
+    }
+}
