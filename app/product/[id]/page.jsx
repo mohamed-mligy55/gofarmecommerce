@@ -1,10 +1,14 @@
-import { 
+
+  import { 
   FaStar, FaHome, FaChevronRight, FaShoppingCart, FaRegHeart, 
   FaExchangeAlt, FaQuestionCircle, FaTruck, FaShareAlt, FaChevronDown, 
   FaUndo, FaShieldAlt, FaCheckCircle, FaBox, FaSyncAlt 
 } from "react-icons/fa";
+import  {addToCart} from "../../store/cartslice"
+import { useDispatch } from "react-redux";
 
 export default async function ProductPage({ params }) {
+  
   const { id } = await params;
   const res = await fetch(`https://dummyjson.com/products/${id}`);
   const product = await res.json();
@@ -121,7 +125,7 @@ export default async function ProductPage({ params }) {
   
   {/* أزرار الـ Add to Cart والـ Heart */}
   <div className="flex gap-3">
-    <button className="flex-1 border-2 hover:border-[#00a859] bg-[#00a859] text-white py-2 rounded-lg flex items-center justify-center gap-2 font-bold  transition-all">
+    <button  className="flex-1 border-2 hover:border-[#00a859] bg-[#00a859] text-white py-2 rounded-lg flex items-center justify-center gap-2 font-bold  transition-all">
       <FaShoppingCart className="text-2xl" />
       Add to Cart
     </button>

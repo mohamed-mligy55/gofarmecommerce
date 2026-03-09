@@ -56,7 +56,7 @@ header form input {
 header form input:hover {
     border: 1px solid #00a844 ;
 }
-@media(max-width:767px) {
+@media(max-width:992px) {
     header form {
         display: none;
     }

@@ -1,0 +1,25 @@
+footer .icons {
+    display: flex;
+    gap: 15px;
+}
+footer .icons a {
+        width: 40px;
+    height: 40px;
+    border: 1px solid #6b7280;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 20px;
+    transition: 0.3s;
+}
+footer .icons a:hover {
+    color:#00a844 ;
+    border: 1px solid #00a844;
+}
+footer ul li {
+    transition: 0.3s;
+}
+footer ul li:hover {
+    color: #00a844;
+}
