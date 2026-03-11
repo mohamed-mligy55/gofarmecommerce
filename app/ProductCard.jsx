@@ -8,8 +8,9 @@ import { addToCart } from "./store/cartslice";
 import { addtoheart } from "./store/heartslice";
 import toast from 'react-hot-toast';
 import Image from 'next/image';
+import { memo } from 'react';
 
-const ProductCard = ({ product }) => {
+const ProductCard = memo(({ product }) => {
   const dispatch = useDispatch();
 
   const handleAction = (action, message) => {
@@ -68,6 +69,6 @@ const ProductCard = ({ product }) => {
       </button>
     </div>
   );
-};
+});
 
 export default ProductCard;

@@ -140,6 +140,16 @@ header .bottom ul {
     overflow-x: auto;
     white-space: nowrap;
 }
+header .container .signup  .buttons .logout {
+    color: #fff;
+    background-color: #00a844;
+    padding: 4px 10px;
+    transition: 0.3s;
+    border: 1px solid #00a844;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
 header .bottom ul li a {
     color: #6b7280;
     font-size: 15px;

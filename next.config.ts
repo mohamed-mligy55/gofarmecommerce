@@ -1,8 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ['cdn.dummyjson.com'], // الطريقة الأبسط والأسرع
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.dummyjson.com',
+      },
+    ],
   },
-}
+  transpilePackages: ['react-icons'],
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

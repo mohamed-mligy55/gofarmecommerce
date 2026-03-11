@@ -1,8 +1,12 @@
 import React from 'react';
 import { HiOutlineBookOpen, HiOutlineUsers, HiOutlineEye } from 'react-icons/hi'; // أيقونات مشابهة للصورة
 import { AiFillHome } from 'react-icons/ai';
-
-const contact = () => {
+export const metadata = {
+  title: "Blog | GoFarm Support",
+  description: "Get in touch with GoFarm. We are here to help with your organic grocery inquiries, support, and feedback.",
+  keywords: ["contact gofarm", "customer support", "organic grocery help"],
+};
+const Blog = () => {
   return (
    <>
 
@@ -77,4 +81,4 @@ const contact = () => {
   )
 }
 
-export default contact
+export default Blog

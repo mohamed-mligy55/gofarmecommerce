@@ -1,4 +1,10 @@
 import React from 'react';
+export const metadata = {
+  title: "Contact Us | GoFarm Support",
+  description: "Get in touch with GoFarm. We are here to help with your organic grocery inquiries, support, and feedback.",
+  keywords: ["contact gofarm", "customer support", "organic grocery help"],
+};
+
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 
 import { HiOutlineBookOpen, HiOutlineLocationMarker, HiOutlinePhone, HiOutlineMail, HiOutlineClock, HiOutlineChatAlt } from 'react-icons/hi';

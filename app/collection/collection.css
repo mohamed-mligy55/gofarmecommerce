@@ -1,0 +1,17 @@
+  .collection .icons {
+  position: absolute;
+  right: -35px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+ .collection.product:hover .icons {
+  right: 17px;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+}
+ .collection .product:hover .icons button:hover {
+background-color: white;
+color: #008a38;
+border: 1px solid #008a38 ;
+}

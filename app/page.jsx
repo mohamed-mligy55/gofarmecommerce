@@ -3,15 +3,12 @@
 import { IoIosArrowForward } from "react-icons/io";
 import ProductSlider from "./ProductSlider";
 import Homefarm from "./_pages/Home/Home";
+import Image from 'next/image';
 import "./page.css";
-import ProductCard from "./ProductCard";
-import Image from "next/image";
- const metadata = {
-title :{
-  default:"home",
- 
+  export const metadata = {
+title:"home",
+descerption:"the first page"
 
-}
 };
 
 
@@ -27,6 +24,13 @@ export default async function Home() {
     <div className="main-content flex flex-col gap-30">
       {/* Banner */}
       <div className="banner">
+        <Image 
+          src="/images/banner.webp" // المسار يبدأ من داخل مجلد public مباشرة
+          alt="Banner Image"
+          fill // لجعل الصورة تملأ الحاوية
+          className="object-cover" // لضمان عدم تشوه الصورة وتغطية المساحة
+          priority // يفضل إضافتها للصور الكبيرة في أعلى الصفحة لتحسين الأداء
+        />
    
         <div className="text">
           <h1 className="text-5xl text-[#18181b] font-bold leading-[1.2]">All you need for<br/> perfect breakfast</h1>

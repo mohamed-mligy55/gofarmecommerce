@@ -7,6 +7,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { useRouter } from 'next/navigation';
+import { loginAction } from '@/actions/auth';
 
 
 
@@ -25,10 +26,19 @@ const SignIn = () => {
     resolver: zodResolver(signInSchema),
   });
 
-  const onSubmit =  (data) => {
-    console.log("Login data:", data);
-    router.push('/');
-
+const onSubmit = async (data) => {
+  try {
+    // استدعاء الـ Server Action
+    const result = await loginAction(data);
+    
+    if (result.success) {
+      // بعد ما السيرفر يحط الكوكي، بنحول المستخدم للـ home
+      router.push('/');
+      router.refresh(); // مهم جداً عشان الـ Middleware يتأكد من الحالة الجديدة
+    }
+  } catch (error) {
+    console.error("Login failed", error);
+  }
 };
     // بعد نجاح التحقق، ننتقل إلى الصفحة الرئيسية
 
