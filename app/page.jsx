@@ -5,6 +5,7 @@ import ProductSlider from "./ProductSlider";
 import Homefarm from "./_pages/Home/Home";
 import Image from 'next/image';
 import "./page.css";
+import banner from "../public/images/banner.webp"
   export const metadata = {
 title:"home",
 descerption:"the first page"
@@ -25,7 +26,7 @@ export default async function Home() {
       {/* Banner */}
       <div className="banner">
         <Image 
-          src="/images/banner.webp" // المسار يبدأ من داخل مجلد public مباشرة
+          src={banner} // المسار يبدأ من داخل مجلد public مباشرة
           alt="Banner Image"
           fill // لجعل الصورة تملأ الحاوية
           className="object-cover" // لضمان عدم تشوه الصورة وتغطية المساحة

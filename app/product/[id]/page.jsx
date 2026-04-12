@@ -6,6 +6,7 @@
 } from "react-icons/fa";
 import  {addToCart} from "../../store/cartslice"
 import { useDispatch } from "react-redux";
+import AddToCartBtn from "../AddToCartBtn";
 
 export default async function ProductPage({ params }) {
   
@@ -125,10 +126,7 @@ export default async function ProductPage({ params }) {
   
   {/* أزرار الـ Add to Cart والـ Heart */}
   <div className="flex gap-3">
-    <button  className="flex-1 border-2 hover:border-[#00a859] bg-[#00a859] text-white py-2 rounded-lg flex items-center justify-center gap-2 font-bold  transition-all">
-      <FaShoppingCart className="text-2xl" />
-      Add to Cart
-    </button>
+    <AddToCartBtn product={product} />
     <button className="w-14 h-14 border-2 border-gray-100 rounded-lg flex items-center justify-center text-gray-400 hover:text-red-500 hover:border-red-100 transition-all shadow-sm">
       <FaRegHeart size={20} />
     </button>
