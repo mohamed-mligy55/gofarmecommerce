@@ -8,6 +8,9 @@ import { FaGithub } from 'react-icons/fa';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 import { useRouter } from 'next/navigation';
 import { loginAction } from '@/actions/auth';
+import signupImg from "../../public/images/signin-image.webp"; // المسار الصحيح بدون مسافة
+import Image from "next/image" 
+
 
 
 
@@ -94,9 +97,13 @@ const onSubmit = async (data) => {
           {/* ... بقية الأجزاء (Google/Github) ... */}
         </div>
 
-        <div className="hidden md:flex w-1/2 justify-center">
-          <img src="https://gofarm.reactbd.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsignin-image.56cc179c.webp&w=1080&q=75" alt="Login Illustration" className="w-full max-w-md" />
-        </div>
+              <Image
+        src={signupImg}
+        width={500}
+        height={500}
+        alt="Login"
+        priority
+      />
       </div>
     </div>
   );

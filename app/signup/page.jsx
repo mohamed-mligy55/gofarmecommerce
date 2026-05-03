@@ -7,6 +7,10 @@ import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import Image from "next/image" 
+// الخطأ كان هنا: "...webp "
+import signupImg from "../../public/images/signin-image.webp"; // المسار الصحيح بدون مسافة
+
 
 
 
@@ -81,10 +85,13 @@ const SignupForm = () => {
         </div>
 
         {/* الصورة الجانبية */}
-        <div className="hidden lg:block">
-                   <img src="https://gofarm.reactbd.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fsignin-image.56cc179c.webp&w=1080&q=75" alt="Login Illustration" className="w-full max-w-md" />
-
-        </div>
+        <Image
+  src={signupImg}
+  width={500}
+  height={500}
+  alt="Login"
+  priority
+/>
       </div>
     </div>
   );
