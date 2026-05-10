@@ -8,7 +8,7 @@ import { MdEmail } from "react-icons/md";
 import { FaArrowUp, FaGithub,FaLinkedinIn,FaFacebookF  } from "react-icons/fa";
 import { FiYoutube } from "react-icons/fi";
 import "./footer.css"
-
+import Image from "next/image";
 
 
 
@@ -75,7 +75,13 @@ const Footer = () => {
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
         {/* اللوجو والنبذة */}
         <div className='flex flex-col gap-2.5' >
-          <img src="https://gofarm.reactbd.com/logo.svg " className='h-8 w-[140px]'/>
+          <Image
+  src="https://gofarm.reactbd.com/logo.svg"
+  alt="logo"
+  width={140}
+  height={32}
+  className="h-8 w-[140px]"
+/>
           <p className="text-gray-500 ">Discover fresh, organic farm products at GoFarm, your trusted online destination.</p>
           
           <div className='icons '>

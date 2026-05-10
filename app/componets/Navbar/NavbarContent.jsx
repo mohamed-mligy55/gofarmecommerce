@@ -4,9 +4,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { useSelector } from 'react-redux';
-import { logoutAction } from '@/actions/auth';
 
-import styles from "./Navbar.css"
+import "./Navbar.css"
 
 import { CiSearch } from "react-icons/ci";
 import { ShoppingCart } from "lucide-react";
@@ -31,12 +30,13 @@ export default function NavbarContent({ isLoggedIn }) {
           <div className='center  flex justify-between items-center '>
             <div className='image'>
               <Link href="/">
-              <Image
-              src="https://gofarm.reactbd.com/logo.svg"
-              alt='headerimage'
-              width={140}
-              height={80}
-              />
+            <Image 
+  src={`https://gofarm.reactbd.com/logo.svg`}
+  alt="Logo"
+  width={200} // القيمة الأصلية أو القصوى
+  height={100} // القيمة الأصلية
+  className="w-[150px] h-auto" // هنا نحدد العرض ونجعل الطول يتناسب تلقائياً
+/>
               </Link>
         
           </div>
@@ -62,16 +62,14 @@ export default function NavbarContent({ isLoggedIn }) {
     
         </div>
         <div className='buttons flex gap-3'>
-        {isLoggedIn ? (
-          <form action={logoutAction}>
-            <button  type="submit" className='logout'>Logout</button>
-          </form>
-        ) : (
+        
+      
+        
           <>
             <Link href="/login" className='login'>Login</Link>
             <Link href="/signup" className='register'>Register</Link>
           </>
-        )}
+        
       </div>
     </div>
     </div>

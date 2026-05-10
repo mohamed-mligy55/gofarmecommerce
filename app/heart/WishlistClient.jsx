@@ -6,8 +6,10 @@ import { addToCart } from "../store/cartslice";
 import toast from 'react-hot-toast';
 import Image from 'next/image'; // للأداء العالي
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 
 const WishlistClient = () => {
+    const router = useRouter();
     const products = useSelector(state => state.heart || []);
     const dispatch = useDispatch();
 
@@ -61,6 +63,7 @@ const WishlistClient = () => {
                                     fill
                                     sizes="(max-width: 768px) 100vw, 25vw"
                                     className="object-contain p-2 group-hover:scale-110 transition-transform duration-500"
+                                    loading='lazy'
                                 />
                             </div>
 

@@ -32,6 +32,8 @@ const ProductCard = memo(({ product }) => {
     height={200}
     className="object-contain hover:scale-110 transition-transform duration-500"
     sizes="(max-width: 768px) 100vw, 200px"
+      priority
+    
   />
 </Link>
         <div className="icons">
