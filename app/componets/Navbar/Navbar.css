@@ -154,8 +154,12 @@ header .bottom ul li a {
     color: #6b7280;
     font-size: 15px;
     font-weight: bold;
+    transition: 0.3s;
 }
 header .bottom ul li a.active {
+    color: #00a844;
+}
+header .bottom ul li a:hover {
     color: #00a844;
 }
 @media(max-width:767px){

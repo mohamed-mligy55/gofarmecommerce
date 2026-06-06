@@ -24,31 +24,46 @@ const ProductCard = memo(({ product }) => {
   return (
     <div className="product flex flex-col gap-2 group relative border border-gray-200 rounded-lg overflow-hidden bg-white hover:shadow-lg transition-all duration-300 h-full">
       <div className="relative h-48 w-full bg-gray-50 flex items-center justify-center overflow-hidden">
-       <Link href={`/product/${product.id}`}>
-  <Image
-    src={product.thumbnail}
-    alt={product.title}
-    width={200} // حدد أبعاد تقريبية
-    height={200}
-    className="object-contain hover:scale-110 transition-transform duration-500"
-    sizes="(max-width: 768px) 100vw, 200px"
-      priority
-    
-  />
-</Link>
+        <Link href={`/product/${product.id}`} className="relative w-full h-full block">
+          <Image
+            src={product.thumbnail}
+            alt={`صورة المنتج ${product.title}`}
+            width={200}
+            height={200}
+            className="object-contain hover:scale-110 transition-transform duration-500 w-full h-full"
+            sizes="(max-width: 768px) 100vw, 200px"
+            // ملاحظة LCP: تمت إزالة priority من الكارد الفرعي لأن الكروت التي تظهر أسفل الشاشة (Below the fold) 
+            // يفضل أن تظل lazy loading لكي لا تبطئ تحميل أول عنصر (Hero Banner) في الصفحة.
+            loading="lazy" 
+          />
+        </Link>
+        
         <div className="icons">
-          <button onClick={() => handleAction(addtoheart(product), `${product.title} Added To Wishlist!`)} 
-                  className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition">
+          {/* تحسين الـ Accessibility بإضافة aria-label لكل الأزرار التي تحتوي على أيقونات فقط */}
+          <button 
+            onClick={() => handleAction(addtoheart(product), `${product.title} Added To Wishlist!`)} 
+            className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition"
+            aria-label={`إضافة ${product.title} إلى المفضلة`}
+          >
             <FaHeart />
           </button>
-          <button onClick={() => handleAction(addToCart(product), `${product.title} added to cart!`)}
-                  className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition">
+          
+          <button 
+            onClick={() => handleAction(addToCart(product), `${product.title} added to cart!`)}
+            className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition"
+            aria-label={`إضافة ${product.title} إلى سلة المشتريات`}
+          >
             <PiShoppingCartBold />
           </button>
-          <button className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition">
+          
+          <button 
+            className="w-8 h-8 bg-green-600 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition"
+            aria-label={`مشاركة منتج ${product.title}`}
+          >
             <FaShare />
           </button>
         </div>
+        
         <div className="absolute top-2 left-2 flex flex-col gap-1 z-10">
           <span className="bg-green-600 text-white text-[13px] px-2 py-0.5 rounded shadow">New</span>
           <span className="bg-red-600 text-white text-[13px] px-2 py-0.5 rounded shadow">-10%</span>
@@ -58,6 +73,7 @@ const ProductCard = memo(({ product }) => {
       <div className="info p-4 flex flex-col gap-2">
         <h3 className="font-bold text-gray-800 hover:text-green-600 transition-colors truncate">{product.title}</h3>
         <div className="stars flex text-yellow-400 text-xs">
+          {/* تم إضافة الـ Key هنا لتجنب تحذيرات الكونسول أثناء عمل Loop */}
           {[...Array(5)].map((_, i) => <RiStarSFill key={i} />)}
         </div>
         <div className="flex items-center gap-2">
@@ -65,12 +81,18 @@ const ProductCard = memo(({ product }) => {
           <span className="line-through text-gray-400 text-xs">$19.00</span>
         </div>
       </div>
-      <button onClick={() => handleAction(addToCart(product), `${product.title} added to cart!`)} 
-              className="bg-green-600 text-white w-full py-2 rounded-md mt-auto text-sm font-medium hover:bg-green-700 transition-all">
+      
+      <button 
+        onClick={() => handleAction(addToCart(product), `${product.title} added to cart!`)} 
+        className="bg-green-600 text-white w-full py-2 rounded-md mt-auto text-sm font-medium hover:bg-green-700 transition-all"
+      >
         Add to Cart
       </button>
     </div>
   );
 });
+
+// تحديد اسم المكون يسهل عملية الـ Debugging عند استخدام memo
+ProductCard.displayName = 'ProductCard';
 
 export default ProductCard;

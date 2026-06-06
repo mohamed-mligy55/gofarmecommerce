@@ -22,6 +22,12 @@
     gap: 20px;
     align-items: center;
 }
+@media(max-width:767px) {
+    .selling .container .our-join .buttons  {
+       display: flex;
+       flex-direction: column;
+    }
+}
 .selling .our-join .buttons button {
     background-color: #008a38;
     color: white;
@@ -40,6 +46,13 @@
     flex-direction: column;
     gap: 3px;
 }
+@media(max-width:767px) {
+    .selling .container .our-join .all-number  {
+       display: flex;
+    flex-direction: column;
+   margin-bottom: 30px;
+    }
+}
 .selling .our-join .all-number .number p:first-child{
     color: #008a38;
     font-size: 30px;
@@ -56,6 +69,13 @@ background-color: white;
 padding: 20px;
 transition: 0.3s;
 
+}
+@media(max-width:767px) {
+    .selling .container .sales  {
+       display: flex;
+    flex-direction: column;
+   
+    }
 }
 .selling .sales .box .text {
     

@@ -4,7 +4,6 @@ import "./globals.css";
 import Navbar from "./componets/Navbar/navbar"
 import Providers from "./store/provider";
 import { Toaster } from 'react-hot-toast';
-import { PersistGate } from "redux-persist/integration/react";
 import Footer from "./componets/Footer/Footer"
 
 const geistSans = Geist({

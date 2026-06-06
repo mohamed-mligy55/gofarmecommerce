@@ -46,7 +46,7 @@ const Homefarm = () => {
                     <h2 className="text-4xl  inline leading-tight font-bold">Start Selling on <span className="text-green-600">GoFarm</span></h2>
                     <p className='text-gray-600 leading-[1.6] '>Turn your passion into profit. Join thousands of successful vendors who trust GoFarm to grow their business and reach new customers every day.</p>
                 </div>
-                <div className='buttons'>
+                <div className=' buttons'>
                     <button className='flex items-center gap-1'>Become a Vendor <FaArrowRight /> </button>
                     <button>Learn More</button>
                 </div>

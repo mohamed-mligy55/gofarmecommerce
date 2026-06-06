@@ -1,15 +1,17 @@
-"use client"
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+"use client";
+import { useRef } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import ProductCard from "./ProductCard";
 
 const ProductSlider = ({ title, products, count }) => {
+  const trackRef = useRef(null);
 
-  const uniqueId = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+  const scrollByPage = (direction) => {
+    const track = trackRef.current;
+    if (!track) return;
+    // Scroll roughly one viewport of cards at a time.
+    track.scrollBy({ left: direction * track.clientWidth, behavior: "smooth" });
+  };
 
   return (
     <div className="container">
@@ -23,38 +25,33 @@ const ProductSlider = ({ title, products, count }) => {
         </div>
 
         <div className="relative">
-          {/* تأكد أن الكلاسات هنا تطابق الـ navigation بالأسفل */}
-          <div className={`prev-${uniqueId} absolute left-[-15px] top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-white shadow-md w-9 h-9 rounded-full flex items-center justify-center hover:bg-green-600 hover:text-white transition`}>
-            <IoIosArrowBack size={20} />
-          </div>
-          <div className={`next-${uniqueId} absolute right-[-15px] top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-white shadow-md w-9 h-9 rounded-full flex items-center justify-center hover:bg-green-600 hover:text-white transition`}>
-            <IoIosArrowForward size={20} />
-          </div>
-
-          <Swiper
-            modules={[Navigation, Pagination]}
-            // لاحظ إضافة النقطة (.) قبل اسم الكلاس هنا
-            navigation={{ 
-                nextEl: `.next-${uniqueId}`, 
-                prevEl: `.prev-${uniqueId}` 
-            }}
-            pagination={{ clickable: true }}
-            spaceBetween={20}
-            slidesPerView={4}
-            breakpoints={{ 
-               
-  320: { slidesPerView: 1, spaceBetween: 10 },
-  640: { slidesPerView: 2, spaceBetween: 15 },
-  1024: { slidesPerView: 4, spaceBetween: 20 },
-}}
-     
+          <button
+            type="button"
+            onClick={() => scrollByPage(-1)}
+            aria-label="Previous products"
+            className="absolute left-[-15px] top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-white shadow-md w-9 h-9 rounded-full flex items-center justify-center hover:bg-green-600 hover:text-white transition"
           >
+            <IoIosArrowBack size={20} />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollByPage(1)}
+            aria-label="Next products"
+            className="absolute right-[-15px] top-1/2 -translate-y-1/2 z-10 cursor-pointer bg-white shadow-md w-9 h-9 rounded-full flex items-center justify-center hover:bg-green-600 hover:text-white transition"
+          >
+            <IoIosArrowForward size={20} />
+          </button>
+
+          <div ref={trackRef} className="slider-track flex gap-5 overflow-x-auto snap-x snap-mandatory">
             {products?.map((product) => (
-              <SwiperSlide key={product.id}>
+              <div
+                key={product.id}
+                className="slider-item flex-none basis-full sm:basis-[calc(50%-10px)] lg:basis-[calc(25%-15px)] snap-start"
+              >
                 <ProductCard product={product} />
-              </SwiperSlide>
+              </div>
             ))}
-          </Swiper>
+          </div>
         </div>
       </div>
     </div>

@@ -30,8 +30,8 @@ export default async function Home() {
           alt="Banner Image"
           fill // لجعل الصورة تملأ الحاوية
           className="object-cover" // لضمان عدم تشوه الصورة وتغطية المساحة
-          priority
-           // يفضل إضافتها للصور الكبيرة في أعلى الصفحة لتحسين الأداء
+              priority // <--- مهم جداً: يخبر المتصفح بتحميل الصورة فوراً دون انتظار
+        fetchPriority="high" //            // يفضل إضافتها للصور الكبيرة في أعلى الصفحة لتحسين الأداء
         />
    
         <div className="text">

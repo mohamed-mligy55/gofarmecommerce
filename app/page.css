@@ -91,55 +91,15 @@ border: 1px solid #008a38 ;
 }
 
 
-/* شكل الزرارين */
-.swiper-button-next,
-.swiper-button-prev {
-  width: 45px;
-  height: 45px;
-  background-color: #00a844;
-  border-radius: 50%;
-  color: white !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-  transition: 0.3s ease;
-
+/* CSS scroll-snap slider track (replaces Swiper) */
+.slider-track {
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE/Edge */
+  padding-block: 4px; /* room for card hover shadow */
 }
-
-/* تكبير الأيقونة */
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  font-size: 50px;
-}
-
-/* Hover effect */
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-  background-color: #008a38;
-  transform: scale(1.1);
-}
-
-/* مكانهم */
-.swiper-button-prev {
-  left: -20px;
-
-}
-
-.swiper-button-next {
-  right: -20px;
-}
-.swiper-pagination-bullet {
-  width: 8px;
-  height: 8px;
-  background: #ccc;
-  opacity: 1;
-}
-
-.swiper-pagination-bullet-active {
-  background: #00a844;
-  transform: scale(1.2);
-}
-.swiper-pagination {
-  position: relative !important;
-  margin-top: 30px;
+.slider-track::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 .feature .container .vegetable .product .info {
   padding: 10px;

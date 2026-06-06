@@ -5,11 +5,17 @@ import ProductCard from '../ProductCard';
 import "./collection.css"
 
 const GroceriesClient = ({ initialProducts }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [inputValue, setInputValue] = useState(""); // النص الحالي داخل الـ Input
+  const [searchTerm, setSearchTerm] = useState("");  // الكلمة التي سيتم الفلترة بناءً عليها بعد الضغط على الزر
   const [sortBy, setSortBy] = useState("default");
 
-  // تحسين الأداء: استخدام useMemo بدلاً من useEffect لتصفية المنتجات
-  // هذا يمنع العمليات الحسابية المكررة عند كل رندرة
+  // دالة التعامل مع إرسال نموذج البحث
+  const handleSearchSubmit = (e) => {
+    e.preventDefault(); // منع إعادة تحميل الصفحة
+    setSearchTerm(inputValue); // تحديث كلمة البحث الفلكية لتشغيل الـ useMemo
+  };
+
+  // تصفية المنتجات: تعمل فقط عندما تتغير searchTerm أو sortBy أو initialProducts
   const filteredProducts = useMemo(() => {
     let result = [...initialProducts];
 
@@ -36,20 +42,33 @@ const GroceriesClient = ({ initialProducts }) => {
       </header>
 
       {/* Controls */}
-      <div className="flex flex-col md:flex-row gap-6 mb-10">
-        <div className="relative flex-1">
-          <label htmlFor="search" className="sr-only">Search products</label>
-          <input 
-            id="search"
-            type="text"
-            placeholder="Search products..."
-            className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 outline-none"
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <Search className="absolute left-3 top-3.5 text-gray-400 w-5 h-5" />
-        </div>
+      <div className="flex flex-col md:flex-row gap-6 mb-10 items-end md:items-center">
+        
+        {/* تحويل حقل البحث إلى Form لدعم الضغط على الزر وزر Enter */}
+        <form onSubmit={handleSearchSubmit} className="flex flex-1 gap-2 w-full">
+          <div className="relative flex-1">
+            <label htmlFor="search" className="sr-only">Search products</label>
+            <input 
+              id="search"
+              type="text"
+              value={inputValue}
+              placeholder="Search products..."
+              className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-green-500 outline-none"
+              onChange={(e) => setInputValue(e.target.value)}
+            />
+            <Search className="absolute left-3 top-3.5 text-gray-400 w-5 h-5" />
+          </div>
+          
+          {/* زر البحث الجديد */}
+          <button 
+            type="submit"
+            className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-xl transition-colors duration-200"
+          >
+            Search
+          </button>
+        </form>
 
-        <div className="relative">
+        <div className="relative w-full md:w-auto">
           <select 
             aria-label="Sort products"
             className="w-full sm:w-48 appearance-none pl-10 pr-4 py-3 border border-gray-200 rounded-xl bg-white cursor-pointer"
